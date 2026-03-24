@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html>
+<form method="POST">
 
-<head>
+<input type="text" name="username" placeholder="usuario">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<input type="password" name="password" placeholder="contraseña">
 
-</head>
+<button>Ingresar</button>
 
-<body>
+</form>
 
-<div class="login-container">
+{% if error %}
 
-<div class="login-card">
+<p style="color:red">{{ error }}</p>
 
-<h2>Sistema de Gestión de Insumos</h2>
-
-<input placeholder="Usuario">
-
-<input placeholder="Contraseña" type="password">
-
-<button onclick="window.location.href='/dashboard'">
-
-Ingresar
-
-</button>
-
-</div>
-
-</div>
-
-</body>
-</html>
+{% endif %}
