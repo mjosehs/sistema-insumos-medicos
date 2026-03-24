@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="content">
+
+<h2>Asignar insumo a trabajador</h2>
+
+<form method="POST">
+
+Trabajador
+
+<input name="trabajador">
+
+Insumo
+
+<input name="insumo">
+
+Cantidad
+
+<input name="cantidad">
+
+<button>Asignar</button>
+<a href="/dashboard">
+
+<button>⬅ Volver al dashboard</button>
+
+</a>
+
+</form>
+
+</div>
+
+</body>
+</html>
