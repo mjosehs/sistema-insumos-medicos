@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="content">
+
+<h2>Reportes de asignación</h2>
+
+<table>
+
+<tr>
+
+<th>Trabajador</th>
+
+<th>Insumo</th>
+
+<th>Cantidad</th>
+
+</tr>
+
+{% for a in asignaciones %}
+
+<tr>
+
+<td>{{a[1]}}</td>
+
+<td>{{a[2]}}</td>
+
+<td>{{a[3]}}</td>
+
+</tr>
+
+{% endfor %}
+<a href="/dashboard">
+
+<button>⬅ Volver al dashboard</button>
+
+</a>
+
+</table>
+
+</div>
+
+</body>
+</html>

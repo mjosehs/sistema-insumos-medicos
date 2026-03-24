@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<h2>🩺 Insumos médicos</h2>
+
+<a href="/dashboard">Inicio</a>
+
+<a href="/entradas">Entradas</a>
+
+<a href="/asignacion">Asignaciones</a>
+
+<a href="/merma">Mermas</a>
+
+<a href="/reportes">Reportes</a>
+
+</div>
+
+<div class="content">
+
+<h1>Dashboard</h1>
+
+<div class="metrics">
+
+<div class="metric blue">
+
+Total de Insumos
+
+<h2>230</h2>
+
+</div>
+
+<div class="metric red">
+
+Insumos críticos
+
+<h2>8</h2>
+
+</div>
+
+<div class="metric orange">
+
+Merma registrada
+
+<h2>15</h2>
+
+</div>
+
+<div class="metric green">
+
+Alertas
+
+<h2>3</h2>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Últimos movimientos</h3>
+
+<table>
+
+<tr>
+
+<th>Movimiento</th>
+
+<th>Insumo</th>
+
+<th>Cantidad</th>
+
+<th>Fecha</th>
+
+</tr>
+
+{% for e in entradas %}
+
+<tr>
+
+<td>Entrada</td>
+
+<td>{{e[1]}}</td>
+
+<td>{{e[2]}}</td>
+
+<td>{{e[3]}}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
