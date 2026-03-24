@@ -1,10 +1,23 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import os
+
 
 app = Flask(__name__)
 
+def conectar_db():
+    return sqlite3.connect("database.db")
+
 def get_db():
     return sqlite3.connect("database.db")
+    @app.route("/")
+    
+def home():
+    return render_template("dashboard.html")
+    
+if __name__ == "__main__":
+    puerto = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=puerto)
 
 def crear_tablas():
 
