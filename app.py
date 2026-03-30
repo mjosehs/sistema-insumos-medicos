@@ -69,23 +69,6 @@ def crear_tablas():
 
 crear_tablas()
 
-    
-    # crear usuario admin por defecto
-    password_hash = generate_password_hash("1234")
-
-    try:
-        cursor.execute(
-            "INSERT INTO usuarios(username,password) VALUES(?,?)",
-            ("admin", password_hash)
-        )
-        db.commit()
-    except:
-        pass
-
-    db.close()
-
-crear_tablas()
-
 # LOGIN
 @app.route("/", methods=["GET","POST"])
 def login():
