@@ -63,6 +63,24 @@ def crear_tablas():
 
     db.commit()
 
+    def datos_iniciales():
+
+    db = get_db()
+    cursor = db.cursor()
+
+    trabajadores = ["Juan", "Maria", "Pedro"]
+    insumos = ["Guantes", "Mascarillas", "Alcohol gel"]
+
+    for t in trabajadores:
+        cursor.execute("INSERT OR IGNORE INTO trabajadores(nombre) VALUES(?)",(t,))
+
+    for i in insumos:
+        cursor.execute("INSERT OR IGNORE INTO insumos(nombre) VALUES(?)",(i,))
+
+    db.commit()
+
+datos_iniciales()
+
     # crear usuario admin por defecto
     password_hash = generate_password_hash("1234")
 
