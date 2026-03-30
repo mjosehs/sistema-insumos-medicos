@@ -15,23 +15,15 @@ def crear_tablas():
     db = get_db()
     cursor = db.cursor()
 
-    # tabla trabajadores
+    # tabla usuarios
     cursor.execute("""
-    CREATE TABLE IF NOT EXISTS trabajadores(
+    CREATE TABLE IF NOT EXISTS usuarios(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL UNIQUE
+        username TEXT UNIQUE,
+        password TEXT
     )
     """)
 
-    # tabla insumos
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS insumos(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nombre TEXT NOT NULL UNIQUE
-    )
-    """)
-
-    # entradas
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS entradas(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,7 +33,6 @@ def crear_tablas():
     )
     """)
 
-    # asignaciones
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS asignaciones(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -51,7 +42,6 @@ def crear_tablas():
     )
     """)
 
-    # merma
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS merma(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -62,6 +52,22 @@ def crear_tablas():
     """)
 
     db.commit()
+
+    # crear usuario admin por defecto
+    password_hash = generate_password_hash("1234")
+
+    try:
+        cursor.execute(
+            "INSERT INTO usuarios(username,password) VALUES(?,?)",
+            ("admin", password_hash)
+        )
+        db.commit()
+    except:
+        pass
+
+    db.close()
+
+crear_tablas()
 
     
     # crear usuario admin por defecto
