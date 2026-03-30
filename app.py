@@ -8,7 +8,12 @@ app = Flask(__name__)
 app.secret_key = "clave_secreta_123"
 
 def get_db():
-    return sqlite3.connect("database.db")
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    db_path = os.path.join(BASE_DIR, "database.db")
+
+    return sqlite3.connect(db_path)
 
 def crear_tablas():
 
